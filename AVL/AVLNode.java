@@ -1,7 +1,7 @@
 package AVL;
 
 
-public class AVLNode <T extends Comparable<T>> {
+ class AVLNode <T extends Comparable<T>> {
 
   private AVLNode <T> left;
   private AVLNode <T> right;
@@ -39,46 +39,7 @@ public void setFatBal(int fatBal) {
 }
 
 
-public void inserir (T value ){//incrementar o FatBal , criar a rotação simples e dupla 
 
-   if (this.info.compareTo(value)>0) {
-
-    if (this.left == null) {
-        this.setLeft(new AVLNode<T>(value));
-    }else{
-        this.getLeft().inserir(value);
-        this.setFatBal(this.FatBal-1);
-
-        if (this.getFatBal() == -2 && this.getLeft().getFatBal() == -1) {
-            //rotação simples a direita
-
-            
-
-        }else if (this.getFatBal() == -2 && this.getLeft().getFatBal() == 1) {
-            //rotação dupla a direita
-
-        }
-    }
-
-   }else{
-
-    if(this.right ==null){
-        this.setRight(new AVLNode<T>(value));
-    }else{
-        this.getRight().inserir(value);
-        this.setFatBal(this.FatBal+1);
-        
-        if (this.getFatBal() == 2 && this.getRight().getFatBal() == -1) {
-            //rotação simples a esquerda
-
-        }else if (this.getFatBal() == 2 && this.getRight().getFatBal() == 1) {
-            //rotação dupla a esquerda 
-
-        }
-    }
-
-   }
-}
 
    
 
