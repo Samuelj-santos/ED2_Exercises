@@ -15,7 +15,8 @@ public class Retorno <T extends Comparable <T>> {
     }
     void setH (boolean h) {
         this.h = h;
-    }boolean getH () {
+    }
+    boolean getH () {
         return this.h;
     }
     void setInfo (T info) {
