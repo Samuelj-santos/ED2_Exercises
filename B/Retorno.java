@@ -1,16 +1,16 @@
 package B;
 
 
-public class Retorno <T extends Comparable <T>> {
+public class Retorno  {
 
-    private NodeB<T> filhoDir;
+    private NodeB filhoDir;
     private boolean h;
-    private T info;
+    private Integer info;
 
-    void setFilhoDir (NodeB<T> f) {
+    void setFilhoDir (NodeB f) {
         this.filhoDir = f;
     }
-    NodeB<T> getFilhoDir () {
+    NodeB getFilhoDir () {
         return this.filhoDir;
     }
     void setH (boolean h) {
@@ -19,10 +19,10 @@ public class Retorno <T extends Comparable <T>> {
     boolean getH () {
         return this.h;
     }
-    void setInfo (T info) {
+    void setInfo (Integer info) {
         this.info = info;
     }
-    T getInfo () {
+    Integer  getInfo () {
         return this.info;
     }
 }

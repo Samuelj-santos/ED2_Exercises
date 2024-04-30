@@ -1,7 +1,7 @@
 package B;
 
-public class BTree <T extends Comparable<T>>{
-    private NodeB<T> root;
+public class BTree { // acertar  a inserção
+    private NodeB root;
     private final int ordem;
     private final int nChaves;
     private final int minimo;
@@ -16,25 +16,25 @@ public class BTree <T extends Comparable<T>>{
         return root == null;
     }
 
-    public void insert(T info) {
-        T infoRetorno;
+    public void insert(Integer info) {
+        Integer infoRetorno;
 
         if (this.isEmpty() == true) {
 
-            this.root = new NodeB<T>(this.ordem);
+            this.root = new NodeB(this.ordem);
             this.root.preencherRaiz(info, null, null);
 
         } else {
 
-            Retorno<T> result = new Retorno<T>();
+            Retorno result = new Retorno();
             insertB(this.root, info, result);
             boolean h = result.getH();
             if (h) { 
                // Aumetará a altura da árvore
 
-                NodeB<T> filhoDir = result.getFilhoDir();
-                infoRetorno = (T)result.getInfo();
-                NodeB<T> novaRaiz = new NodeB<T>(this.ordem);
+                NodeB filhoDir = result.getFilhoDir();
+                infoRetorno = result.getInfo();
+                NodeB novaRaiz = new NodeB(this.ordem);
                 novaRaiz.preencherRaiz(infoRetorno, this.root, filhoDir);
                 this.root = novaRaiz;
 
@@ -43,12 +43,12 @@ public class BTree <T extends Comparable<T>>{
         }
     }
 
-    private void insertB(NodeB<T> raiz, T info, Retorno<T> result) {
+    private void insertB(NodeB raiz, Integer info, Retorno result) {
     int i, pos;
-    T infoMediano;   
+    Integer  infoMediano;   
      //auxiliar para armazenar a chave que irá subir para o pai
          
-    NodeB<T> filhoDir;
+    NodeB filhoDir;
                
      //referência para o filho à direita da chave
      if (raiz == null) {
@@ -60,7 +60,7 @@ public class BTree <T extends Comparable<T>>{
 
             pos = raiz.buscaBinaria(info);
 
-            if (pos < raiz.getN() && raiz.getInfo(pos) == info) {
+            if (pos < raiz.getN() && raiz.getInfo(pos) == info) { // testa para saber se a chave ja esta raiz
                 System.out.println("Chave já contida na árvore");
                 result.setH(false);
                 
@@ -78,13 +78,13 @@ public class BTree <T extends Comparable<T>>{
 
                             } else { 
                                    //Overflow. Precisa subdividir a página
-                                   NodeB<T> temp = new NodeB<T>(this.ordem);
+                                   NodeB temp = new NodeB(this.ordem);
                                 
                                  //elemento mediano que vai subir para o pai
-                                 infoMediano = (T)raiz.getInfo(this.minimo + 1);
+                                 infoMediano = raiz.getInfo(this.minimo );
 
                                  //insere metade do nó raiz no temp (efetua subdivisão)
-                                  temp.setFilho(0, raiz.getFilho(this.minimo + 1));
+                                  temp.setFilho(0, raiz.getFilho(this.minimo ));
 
                                   for (i = this.minimo + 1; i < this.nChaves; i++) {
 
@@ -93,9 +93,10 @@ public class BTree <T extends Comparable<T>>{
                                   }
                                 //atualiza nó raiz. 
 
-                                for (i = this.minimo + 1; i < this.nChaves; i++) {
+                                for (i = this.minimo ; i < this.nChaves; i++) {
 
-                                    raiz.setInfo(i, null);raiz.setFilho(i + 1, null);
+                                    raiz.setInfo(i, null);
+                                    raiz.setFilho(i + 1, null);
 
                                 }
 
@@ -122,11 +123,13 @@ public class BTree <T extends Comparable<T>>{
                         }
                     }
                 }
+
+
                 public void emOrdem() {
-                if (this.isEmpty() == false) {
+                 if (this.isEmpty() == false) {
                  root.percorrerEmOrdem();
                   } else {
                   System.out.println("Árvore vazia");
                   }
-        }
+               }
 }
