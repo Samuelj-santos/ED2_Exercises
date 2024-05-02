@@ -79,16 +79,18 @@ public class BTree { // acertar  a inserção
                             } else { 
                                    //Overflow. Precisa subdividir a página
                                    NodeB temp = new NodeB(this.ordem);
-                                
+                                   
+                                  //acho que precisa inserir o info antes de realizar a cisão
+                                  
                                  //elemento mediano que vai subir para o pai
                                  infoMediano = raiz.getInfo(this.minimo );
-
+                                 
                                  //insere metade do nó raiz no temp (efetua subdivisão)
-                                  temp.setFilho(0, raiz.getFilho(this.minimo ));
+                                  temp.setFilho(0, raiz.getFilho(this.minimo+1 ));
 
-                                  for (i = this.minimo + 1; i < this.nChaves; i++) {
+                                  for (i = this.minimo +1; i < this.nChaves; i++) {
 
-                                    temp.insereChave(raiz.getInfo(i), raiz.getFilho(i + 1));
+                                    temp.insereChave(raiz.getInfo(i), raiz.getFilho(i+1 ));
 
                                   }
                                 //atualiza nó raiz. 
@@ -96,7 +98,7 @@ public class BTree { // acertar  a inserção
                                 for (i = this.minimo ; i < this.nChaves; i++) {
 
                                     raiz.setInfo(i, null);
-                                    raiz.setFilho(i + 1, null);
+                                    raiz.setFilho(i +1, null);
 
                                 }
 
@@ -104,7 +106,7 @@ public class BTree { // acertar  a inserção
 
                                 //Verifica em qual nó será inserida a nova chave
 
-                                if (pos <= this.minimo) {
+                                if (pos < this.minimo) {
 
                                     raiz.insereChave(result.getInfo(), result.getFilhoDir());
 

@@ -66,11 +66,12 @@ class NodeB {
                      this.filhos[k + 1] = this.filhos[k];
                      this.infos[k] = this.infos[k-1];
                      k--;
-                    }//insere a chave na posição ideal
+                    }
+                    //insere a chave na posição ideal
                     this.infos[pos] = value;
                     this.filhos[pos + 1] = filhoDir;
                     this.n++;
-                }
+            }
 
     
 
