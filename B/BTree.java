@@ -1,5 +1,6 @@
 package B;
-
+import java.util.LinkedList;
+import java.util.Queue;
 public class BTree { // acertar  a inserção
     private NodeB root;
     private final int ordem;
@@ -239,26 +240,82 @@ public class BTree { // acertar  a inserção
                      
                     NodeB aux = this.root;
                     while (aux != null ){
-                         
-                        if (aux.getFilho(0) == null ) { // verifica se é folha 
-                            if (aux.getInfo(aux.buscaBinaria(valor)) == valor ) {
-                                result.setInfo(aux.buscaBinaria(valor));
-                                result.setFilhoDir(aux);
-                            }else {
-                               result.setInfo(aux.buscaBinaria(valor));
-                            result.setFilhoDir(null);  
-                            }
-                           
-                            
+                        if (aux.getInfo(aux.buscaBinaria(valor)) == valor) {
+                            result.setInfo(aux.buscaBinaria(valor));
+                            result.setFilhoDir(aux);
+                            break;
                         }else {
+                            result.setInfo(aux.buscaBinaria(valor));
                             aux = aux.getFilho(aux.buscaBinaria(valor));
                         }
 
                     }
 
+                    
+                    result.setFilhoDir(null);
+
                 }
 
                 return result ; 
+               }
+
+
+               public void preOrdem( ){
+                if (this.isEmpty() == true ) {
+                    System.out.println("Arvore vazia ");
+                }else {
+                    percorrerPreOrdem(this.root);
+                }
+               }
+
+               private void percorrerPreOrdem(NodeB r  ){
+
+                if ( r != null ) {
+                    
+                    imprimirNo(r);
+                    for(int i =0 ; i <= r.getN();i++){
+                        percorrerPreOrdem(r.getFilho(i));
+                    }
+                }
+
+               }
+
+               public void imprimirNo (NodeB raiz ){
+                for(int i =0 ; i <= raiz.getN() ; i++){
+                    if (raiz.getInfo(i) != null) {
+                        System.out.println(raiz.getInfo(i));
+                    }
+                    
+                }
+               }
+
+
+               public void passeioPorNivel(){
+                if (this.isEmpty() == true ) {  
+                    System.out.println("Arvore vazia"); 
+                }else {
+                    Queue<NodeB> queue = new LinkedList<>();
+                    queue.add(this.root);
+
+                  while (queue.isEmpty() == false ){
+                    int nodes = queue.size();
+                    while (nodes>0) {
+                        NodeB noAtual = queue.poll();
+                        for(int i =0 ; i<noAtual.getN();i++){
+                            System.out.println(noAtual.getInfo(i) );
+                        }
+
+                        for(int i =0 ; i <= noAtual.getN();i++){
+                            if (noAtual.getFilho(i) != null) {
+                                queue.add(noAtual.getFilho(i));
+                            }
+                        }
+                        nodes--;
+                    }
+                    System.out.println();
+                  }
+
+                }
                }
 
                

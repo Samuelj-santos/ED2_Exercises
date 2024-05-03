@@ -1,5 +1,7 @@
 package B;
 
+
+
 public class Main {
     public static void main(String[] args) {
         BTree a = new BTree(5);
@@ -17,8 +19,11 @@ public class Main {
             a.insert(valores[i]);
         }
        
-         Retorno  b = a.busca(33);
-         System.out.println(" yep : " + b.getInfo() );
+         Retorno  b = a.busca(132);
+         NodeB c = b.getFilhoDir();
+
+         
+          a.passeioPorNivel();
 
 
 
