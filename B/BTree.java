@@ -43,7 +43,7 @@ public class BTree { // acertar  a inserção
         }
     }
 
-    private void insertB(NodeB raiz, Integer info, Retorno result) {
+    private void insertB(NodeB raiz, Integer info, Retorno result) { 
     int i, pos;
     Integer  infoMediano;   
      //auxiliar para armazenar a chave que irá subir para o pai
@@ -143,4 +143,96 @@ public class BTree { // acertar  a inserção
                   System.out.println("Árvore vazia");
                   }
                }
-}
+
+
+               public int  calcularAltura (){
+                NodeB aux;
+                aux= this.root;
+                int i =0;
+                while (aux != null){
+                    if (aux.getFilho(0) == null) {
+                       return i ;    
+                    }else {
+                        aux = aux.getFilho(0);
+                        i++;
+                    }
+                }
+
+                return -1;
+               }
+
+
+               public NodeB menorNo (){ 
+                
+                if (this.isEmpty() == true ) {
+                    System.out.println("Arvore vazia ");
+                }
+                  
+                NodeB aux,result;
+                aux= this.root;
+
+                while (aux != null){
+                    if (aux.getFilho(0) == null) {
+                        result = aux;
+                        return result;
+                        
+                    }else {
+                        aux = aux.getFilho(0);
+                    }
+                }
+
+                return null;
+            
+               }
+
+               public NodeB maiorNo (){
+                if (this.isEmpty() == true ) {
+                    System.out.println("Arvore vazia ");
+                }
+
+                NodeB aux,result;
+                aux= this.root;
+
+                while (aux != null){
+                    if (aux.getFilho(0) == null) {
+                        result = aux;
+                        return result;
+                        
+                    }else {
+                        aux = aux.getFilho(UltimaPosicaoDoVetorPreenchidaFilhos(aux));
+                    }
+                }
+
+                return null;
+               }
+
+               private    int UltimaPosicaoDoVetorPreenchida (NodeB aux ){ // tire o  private caso queira usar na main
+
+                for(int i =aux.getLengthInfos()-1 ; i>0 ;i--){
+                 if (aux.getInfo(i) != null ) {
+                    return i; 
+                 } 
+                }
+
+                return -1;
+
+               }
+
+               private  int UltimaPosicaoDoVetorPreenchidaFilhos (NodeB aux ){
+
+                for(int i =aux.getLengthInfos() -1; i>0 ;i--){
+                 if (aux.getFilho(i) != null ) {
+                    return i; 
+                 } 
+                }
+
+                return -1;
+
+               }
+
+               
+
+              
+                
+               }
+

@@ -17,6 +17,13 @@ class NodeB {
     
     }
 
+    int getLengthInfos (){
+        return this.infos.length;
+    }
+    int getLengthFilhos (){
+        return this.filhos.length;
+    }
+
     Integer getInfo(int i ){
       return infos[i];
     }
@@ -80,11 +87,16 @@ class NodeB {
                 int i;
                  for (i = 0; i < this.n; i++) {
                     if (this.filhos[i] != null) {
+                       
                         this.filhos[i].percorrerEmOrdem();
+                        
                     }
                     System.out.println(this.infos[i]);
                 }if (this.filhos[i] != null) {
+                     
                     this.filhos[i].percorrerEmOrdem();
+                    
+                    
                 }
             }
         }
