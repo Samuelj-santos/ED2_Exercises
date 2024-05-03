@@ -16,13 +16,13 @@ public class Main {
         for(int i =0 ;i < valores.length;i++){
             a.insert(valores[i]);
         }
-       // a.emOrdem();
+       
+         Retorno  b = a.busca(33);
+         System.out.println(" yep : " + b.getInfo() );
 
-       NodeB maior = a.maiorNo();
-       int altura = a.calcularAltura();
 
-       System.out.println("Altura : " + altura );
 
+       
       
 
         

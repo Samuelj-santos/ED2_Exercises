@@ -230,6 +230,37 @@ public class BTree { // acertar  a inserção
 
                }
 
+
+               public Retorno busca (Integer valor ){
+                Retorno result  = new Retorno();
+                if (this.isEmpty() == true ) {
+                    System.out.println("Arvore vazia ");
+                }else {
+                     
+                    NodeB aux = this.root;
+                    while (aux != null ){
+                         
+                        if (aux.getFilho(0) == null ) { // verifica se é folha 
+                            if (aux.getInfo(aux.buscaBinaria(valor)) == valor ) {
+                                result.setInfo(aux.buscaBinaria(valor));
+                                result.setFilhoDir(aux);
+                            }else {
+                               result.setInfo(aux.buscaBinaria(valor));
+                            result.setFilhoDir(null);  
+                            }
+                           
+                            
+                        }else {
+                            aux = aux.getFilho(aux.buscaBinaria(valor));
+                        }
+
+                    }
+
+                }
+
+                return result ; 
+               }
+
                
 
               
