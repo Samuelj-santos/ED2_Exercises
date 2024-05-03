@@ -83,17 +83,26 @@ public class BTree { // acertar  a inserção
                                   //acho que precisa inserir o info antes de realizar a cisão
                                   
                                  //elemento mediano que vai subir para o pai
-                                 infoMediano = raiz.getInfo(this.minimo );
+                                 infoMediano = raiz.getInfo(this.minimo );//informação do no que esta no meio 
+                                 if (pos == this.minimo ) {
+                                    infoMediano = info;
+                                 }
                                  
                                  //insere metade do nó raiz no temp (efetua subdivisão)
+                                 
                                   temp.setFilho(0, raiz.getFilho(this.minimo+1 ));
-
+                                  
+                                  
                                   for (i = this.minimo +1; i < this.nChaves; i++) {
 
                                     temp.insereChave(raiz.getInfo(i), raiz.getFilho(i+1 ));
 
                                   }
                                 //atualiza nó raiz. 
+                                 if (pos == this.minimo) {
+                                    result.setInfo(raiz.getInfo(this.minimo));// tem que ficar dentro de um if 
+                                 }
+                                 
 
                                 for (i = this.minimo ; i < this.nChaves; i++) {
 
@@ -105,7 +114,7 @@ public class BTree { // acertar  a inserção
                                 raiz.setN(this.minimo);
 
                                 //Verifica em qual nó será inserida a nova chave
-
+                                 
                                 if (pos < this.minimo) {
 
                                     raiz.insereChave(result.getInfo(), result.getFilhoDir());
