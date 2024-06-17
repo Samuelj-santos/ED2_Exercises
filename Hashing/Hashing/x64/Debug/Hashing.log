@@ -1,0 +1,6 @@
+﻿  Hashing.cpp
+C:\Users\samue\OneDrive\Área de Trabalho\Hashing\Hashing.cpp(7,1): warning C4005: '_CRT_SECURE_NO_WARNINGS': redefinição de macro
+  C:\Users\samue\OneDrive\Área de Trabalho\Hashing\Hashing.cpp(7,1):
+  '_CRT_SECURE_NO_WARNINGS' declarado anteriormente na linha de comando
+  
+  Hashing.vcxproj -> C:\Users\samue\OneDrive\Área de Trabalho\Hashing\x64\Debug\Hashing.exe
